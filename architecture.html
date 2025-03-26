@@ -149,80 +149,89 @@
                     %% === Core Layers ===
                     subgraph CoreLayers["Core Layers"]
                         direction LR
-                        B[Frontend (Next.js)]
-                        C[Backend/API Layer (Next.js API Routes)]
-                        D[Database (SQLite/MongoDB/PostgreSQL)]
-                        E[External APIs]
+                        B["Frontend (Next.js)"]
+                        C["Backend/API Layer (Next.js API Routes)"]
+                        D["Database (SQLite/MongoDB/PostgreSQL)"]
+                        E["External APIs"]
                     end
 
                     %% === Core Feature Areas ===
                     subgraph FeatureAreas["Core Feature Areas"]
                         direction TB
-                        F[Knowledge Base]
-                        G[API Playground & Integrations]
-                        H[Design & Creativity Tools]
-                        I[Learning & Project Management]
+                        F["Knowledge Base"]
+                        G["API Playground & Integrations"]
+                        H["Design & Creativity Tools"]
+                        I["Learning & Project Management"]
                     end
 
                     %% === Knowledge Base Features ===
                     subgraph KB["Knowledge Base Features"]
                         direction TB
-                        F1[Markdown Notes]
-                        F2[Code Snippet Manager]
-                        F3[Resource Linking]
-                        F4[Tagging & Search]
-                        F5[Semantic Search (AI)]
-                        F6[Voice-to-Text Notes]
+                        F1["Markdown Notes"]
+                        F2["Code Snippet Manager"]
+                        F3["Resource Linking"]
+                        F4["Tagging & Search"]
+                        F5["Semantic Search (AI)"]
+                        F6["Voice-to-Text Notes"]
                     end
 
                     %% === API Playground Features ===
                     subgraph API["API Playground & Integrations"]
                         direction TB
-                        G1[Personal Dashboard Widgets]
-                        G2[AI Interaction Hub]
-                        G3[API Tester]
-                        G4[Data Visualization Playground]
-                        G5[Utility Tools (URL Shortener, etc.)]
+                        G1["Personal Dashboard Widgets"]
+                        G2["AI Interaction Hub"]
+                        G3["API Tester"]
+                        G4["Data Visualization Playground"]
+                        G5["Utility Tools (URL Shortener, etc.)"]
                     end
 
                     %% === Design & Creativity Features ===
                     subgraph Design["Design & Creativity Tools"]
                         direction TB
-                        H1[Drawing & Diagramming Tool]
-                        H2[Interactive Concept Explorer]
+                        H1["Drawing & Diagramming Tool"]
+                        H2["Interactive Concept Explorer"]
                     end
 
                     %% === Learning & PM Features ===
                     subgraph Learning["Learning & Project Management"]
                         direction TB
-                        I1[Project Portfolio Showcase]
-                        I2[Learning Journal / Blog]
-                        I3[Task & Goal Tracker]
-                        I4[Gamification Elements]
+                        I1["Project Portfolio Showcase"]
+                        I2["Learning Journal / Blog"]
+                        I3["Task & Goal Tracker"]
+                        I4["Gamification Elements"]
                     end
 
                     %% === Technology & Support ===
                     subgraph Tech["Technology & Support"]
                         direction TB
-                        J[UI/UX (Tailwind CSS)]
-                        K[State Management (React Context/Zustand)]
-                        L[Authentication (NextAuth.js?)]
-                        M[Deployment (Vercel)]
+                        J["UI/UX (Tailwind CSS)"]
+                        K["State Management (React Context/Zustand)"]
+                        L["Authentication (NextAuth.js?)"]
+                        M["Deployment (Vercel)"]
                     end
 
                     %% === Example External APIs ===
                     subgraph ExtAPI["Example External APIs"]
                         direction TB
-                        E1[AI APIs (OpenAI, Claude, Gemini)]
-                        E2[Data APIs (Weather, News, GitHub)]
-                        E3[Utility APIs (Bitly, IPInfo)]
-                        E4[Creative APIs (Speech Rec, CodeSandbox)]
+                        E1["AI APIs (OpenAI, Claude, Gemini)"]
+                        E2["Data APIs (Weather, News, GitHub)"]
+                        E3["Utility APIs (Bitly, IPInfo)"]
+                        E4["Creative APIs (Speech Rec, CodeSandbox)"]
                     end
 
                     %% === Connections ===
-                    A --> CoreLayers
-                    A --> FeatureAreas
-                    A --> Tech
+                    A --> B
+                    A --> C
+                    A --> D
+                    A --> E
+                    A --> F
+                    A --> G
+                    A --> H
+                    A --> I
+                    A --> J
+                    A --> K
+                    A --> L
+                    A --> M
 
                     %% Core Layer Connections
                     B --> J
@@ -247,10 +256,26 @@
                     I --> D
 
                     %% Connecting Feature Areas to Specific Features
-                    F --> KB
-                    G --> API
-                    H --> Design
-                    I --> Learning
+                    F --> F1
+                    F --> F2
+                    F --> F3
+                    F --> F4
+                    F --> F5
+                    F --> F6
+                    
+                    G --> G1
+                    G --> G2
+                    G --> G3
+                    G --> G4
+                    G --> G5
+                    
+                    H --> H1
+                    H --> H2
+                    
+                    I --> I1
+                    I --> I2
+                    I --> I3
+                    I --> I4
                     
                     %% Connecting Specific Features to Layers/Tech (Examples)
                     F1 --> B
@@ -282,10 +307,10 @@
                     I3 --> D
                     
                     %% Connecting External APIs Group
-                    E --> ExtAPI
-
-                    %% Deployment Connection
-                    A --> M
+                    E --> E1
+                    E --> E2
+                    E --> E3
+                    E --> E4
 
                     %% === Styling ===
                     classDef root fill:#007bff,stroke:#0056b3,stroke-width:2px,color:#fff,font-weight:bold
