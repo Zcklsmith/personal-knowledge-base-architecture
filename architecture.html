@@ -220,105 +220,105 @@
                     end
 
                     %% === Connections ===
-                    A --> B
-                    A --> C
-                    A --> D
-                    A --> E
-                    A --> F
-                    A --> G
-                    A --> H
-                    A --> I
-                    A --> J
-                    A --> K
-                    A --> L
-                    A --> M
+                    A -->|Primary| B
+                    A -->|Primary| C
+                    A -->|Primary| D
+                    A -->|Primary| E
+                    A -->|Primary| F
+                    A -->|Primary| G
+                    A -->|Primary| H
+                    A -->|Primary| I
+                    A -->|Primary| J
+                    A -->|Primary| K
+                    A -->|Primary| L
+                    A -->|Primary| M
 
                     %% Core Layer Connections
-                    B --> J
-                    B --> K
-                    B --> L
-                    B --> C
-                    C --> D
-                    C --> E
-                    C --> L
+                    B -->|Uses| J
+                    B -->|Uses| K
+                    B -->|Uses| L
+                    B -->|Communicates| C
+                    C -->|Reads/Writes| D
+                    C -->|Integrates| E
+                    C -->|Uses| L
                     
                     %% Feature Area Connections to Layers
-                    F --> B
-                    F --> C
-                    F --> D
-                    G --> B
-                    G --> C
-                    G --> E
-                    H --> B
-                    H --> C
-                    I --> B
-                    I --> C
-                    I --> D
+                    F -->|Runs on| B
+                    F -->|Uses| C
+                    F -->|Stores Data| D
+                    G -->|Runs on| B
+                    G -->|Uses| C
+                    G -->|Integrates| E
+                    H -->|Runs on| B
+                    H -->|Uses| C
+                    I -->|Runs on| B
+                    I -->|Uses| C
+                    I -->|Stores Data| D
 
                     %% Connecting Feature Areas to Specific Features
-                    F --> F1
-                    F --> F2
-                    F --> F3
-                    F --> F4
-                    F --> F5
-                    F --> F6
+                    F -->|Contains| F1
+                    F -->|Contains| F2
+                    F -->|Contains| F3
+                    F -->|Contains| F4
+                    F -->|Contains| F5
+                    F -->|Contains| F6
                     
-                    G --> G1
-                    G --> G2
-                    G --> G3
-                    G --> G4
-                    G --> G5
+                    G -->|Contains| G1
+                    G -->|Contains| G2
+                    G -->|Contains| G3
+                    G -->|Contains| G4
+                    G -->|Contains| G5
                     
-                    H --> H1
-                    H --> H2
+                    H -->|Contains| H1
+                    H -->|Contains| H2
                     
-                    I --> I1
-                    I --> I2
-                    I --> I3
-                    I --> I4
+                    I -->|Contains| I1
+                    I -->|Contains| I2
+                    I -->|Contains| I3
+                    I -->|Contains| I4
                     
                     %% Connecting Specific Features to Layers/Tech (Examples)
-                    F1 --> B
-                    F1 --> D
-                    F2 --> B
-                    F2 --> D
-                    F5 --> C
-                    F5 --> E1
-                    F6 --> B
-                    F6 --> E4
+                    F1 -->|Runs on| B
+                    F1 -->|Stores| D
+                    F2 -->|Runs on| B
+                    F2 -->|Stores| D
+                    F5 -->|Uses| C
+                    F5 -->|Integrates| E1
+                    F6 -->|Runs on| B
+                    F6 -->|Uses| E4
                     
-                    G1 --> B
-                    G1 --> C
-                    G1 --> E2
-                    G2 --> B
-                    G2 --> C
-                    G2 --> E1
-                    G3 --> B
-                    G3 --> C
-                    G5 --> C
-                    G5 --> E3
+                    G1 -->|Runs on| B
+                    G1 -->|Uses| C
+                    G1 -->|Fetches| E2
+                    G2 -->|Runs on| B
+                    G2 -->|Uses| C
+                    G2 -->|Integrates| E1
+                    G3 -->|Runs on| B
+                    G3 -->|Uses| C
+                    G5 -->|Uses| C
+                    G5 -->|Integrates| E3
 
-                    H1 --> B
-                    H1 --> C
+                    H1 -->|Runs on| B
+                    H1 -->|Uses| C
                     
-                    I1 --> B
-                    I1 --> D
-                    I3 --> B
-                    I3 --> D
+                    I1 -->|Runs on| B
+                    I1 -->|Stores| D
+                    I3 -->|Runs on| B
+                    I3 -->|Stores| D
                     
                     %% Connecting External APIs Group
-                    E --> E1
-                    E --> E2
-                    E --> E3
-                    E --> E4
+                    E -->|Provides| E1
+                    E -->|Provides| E2
+                    E -->|Provides| E3
+                    E -->|Provides| E4
 
                     %% === Styling ===
-                    classDef root fill:#007bff,stroke:#0056b3,stroke-width:2px,color:#fff,font-weight:bold
-                    classDef layer fill:#6c757d,stroke:#495057,stroke-width:1px,color:#fff
-                    classDef featureArea fill:#17a2b8,stroke:#117a8b,stroke-width:1px,color:#fff
-                    classDef feature fill:#28a745,stroke:#1e7e34,stroke-width:1px,color:#fff
-                    classDef tech fill:#ffc107,stroke:#cca100,stroke-width:1px,color:#333
-                    classDef external fill:#dc3545,stroke:#a71d2a,stroke-width:1px,color:#fff
+                    classDef root fill:#1a237e,stroke:#0d47a1,stroke-width:3px,color:#fff,font-weight:bold,font-size:16px
+                    classDef layer fill:#2c3e50,stroke:#34495e,stroke-width:2px,color:#fff,font-weight:bold,font-size:14px
+                    classDef featureArea fill:#1b5e20,stroke:#2e7d32,stroke-width:2px,color:#fff,font-weight:bold,font-size:14px
+                    classDef feature fill:#263238,stroke:#37474f,stroke-width:1px,color:#fff,font-weight:500,font-size:12px
+                    classDef tech fill:#4527a0,stroke:#512da8,stroke-width:1px,color:#fff,font-weight:500,font-size:12px
+                    classDef external fill:#b71c1c,stroke:#c62828,stroke-width:1px,color:#fff,font-weight:500,font-size:12px
 
                     class A root
                     class B,C,D,E layer
@@ -326,6 +326,23 @@
                     class F1,F2,F3,F4,F5,F6,G1,G2,G3,G4,G5,H1,H2,I1,I2,I3,I4 feature
                     class J,K,L,M tech
                     class E1,E2,E3,E4 external
+
+                    %% === Layout Settings ===
+                    %% Increase spacing between nodes
+                    linkStyle default stroke-width:2px
+                    %% Make subgraphs more prominent
+                    subgraph CoreLayers
+                        style CoreLayers fill:#1a237e,stroke:#0d47a1,stroke-width:3px,color:#fff
+                    end
+                    subgraph FeatureAreas
+                        style FeatureAreas fill:#1b5e20,stroke:#2e7d32,stroke-width:3px,color:#fff
+                    end
+                    subgraph Tech
+                        style Tech fill:#4527a0,stroke:#512da8,stroke-width:3px,color:#fff
+                    end
+                    subgraph ExtAPI
+                        style ExtAPI fill:#b71c1c,stroke:#c62828,stroke-width:3px,color:#fff
+                    end
             </div>
         </div>
     </div>
