@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Knowledge Base & Learning Center - Architecture</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background: #ffffff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        h1 {
+            color: #212529;
+            margin: 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+        .wrapper {
+            position: relative;
+            width: 100%;
+            height: calc(100vh - 70px);
+            overflow: hidden;
+            cursor: grab;
+            margin-top: 70px;
+        }
+        .wrapper.dragging {
+            cursor: grabbing;
+        }
+        .mermaid-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: center center;
+            transition: transform 0.1s linear;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            user-select: none;
+            min-width: 85vw;
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .zoom-controls {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            display: flex;
+            gap: 8px;
+        }
+        .zoom-button {
+            padding: 8px 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            min-width: 90px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .zoom-button:hover {
+            background: #0056b3;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
+        .zoom-button:active {
+             background: #004085;
+        }
+        .zoom-button:focus {
+            outline: 2px solid #80bdff;
+            outline-offset: 2px;
+        }
+        .mermaid {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 18px;
+            }
+            .wrapper {
+                height: calc(100vh - 55px);
+                margin-top: 55px;
+            }
+            .mermaid-container {
+                padding: 15px;
+                min-width: 95vw;
+                min-height: 90vh;
+            }
+            .zoom-controls {
+                bottom: 15px;
+                right: 15px;
+                padding: 8px;
+                gap: 5px;
+            }
+            .zoom-button {
+                padding: 6px 12px;
+                font-size: 12px;
+                min-width: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Personal Knowledge Base & Learning Center - Architecture</h1>
+    </header>
+    <div class="wrapper" id="wrapper">
+        <div class="mermaid-container" id="container">
+            <div class="mermaid">
+                graph TD
+                    %% === Root Application ===
+                    A["Personal Knowledge Base & Learning Center"]
+
+                    %% === Core Layers ===
+                    subgraph CoreLayers["Core Layers"]
+                        direction LR
+                        B[Frontend (Next.js)]
+                        C[Backend/API Layer (Next.js API Routes)]
+                        D[Database (SQLite/MongoDB/PostgreSQL)]
+                        E[External APIs]
+                    end
+
+                    %% === Core Feature Areas ===
+                    subgraph FeatureAreas["Core Feature Areas"]
+                        direction TB
+                        F[Knowledge Base]
+                        G[API Playground & Integrations]
+                        H[Design & Creativity Tools]
+                        I[Learning & Project Management]
+                    end
+
+                    %% === Knowledge Base Features ===
+                    subgraph KB["Knowledge Base Features"]
+                        direction TB
+                        F1[Markdown Notes]
+                        F2[Code Snippet Manager]
+                        F3[Resource Linking]
+                        F4[Tagging & Search]
+                        F5[Semantic Search (AI)]
+                        F6[Voice-to-Text Notes]
+                    end
+
+                    %% === API Playground Features ===
+                    subgraph API["API Playground & Integrations"]
+                        direction TB
+                        G1[Personal Dashboard Widgets]
+                        G2[AI Interaction Hub]
+                        G3[API Tester]
+                        G4[Data Visualization Playground]
+                        G5[Utility Tools (URL Shortener, etc.)]
+                    end
+
+                    %% === Design & Creativity Features ===
+                    subgraph Design["Design & Creativity Tools"]
+                        direction TB
+                        H1[Drawing & Diagramming Tool]
+                        H2[Interactive Concept Explorer]
+                    end
+
+                    %% === Learning & PM Features ===
+                    subgraph Learning["Learning & Project Management"]
+                        direction TB
+                        I1[Project Portfolio Showcase]
+                        I2[Learning Journal / Blog]
+                        I3[Task & Goal Tracker]
+                        I4[Gamification Elements]
+                    end
+
+                    %% === Technology & Support ===
+                    subgraph Tech["Technology & Support"]
+                        direction TB
+                        J[UI/UX (Tailwind CSS)]
+                        K[State Management (React Context/Zustand)]
+                        L[Authentication (NextAuth.js?)]
+                        M[Deployment (Vercel)]
+                    end
+
+                    %% === Example External APIs ===
+                    subgraph ExtAPI["Example External APIs"]
+                        direction TB
+                        E1[AI APIs (OpenAI, Claude, Gemini)]
+                        E2[Data APIs (Weather, News, GitHub)]
+                        E3[Utility APIs (Bitly, IPInfo)]
+                        E4[Creative APIs (Speech Rec, CodeSandbox)]
+                    end
+
+                    %% === Connections ===
+                    A --> CoreLayers
+                    A --> FeatureAreas
+                    A --> Tech
+
+                    %% Core Layer Connections
+                    B --> J
+                    B --> K
+                    B --> L
+                    B --> C
+                    C --> D
+                    C --> E
+                    C --> L
+                    
+                    %% Feature Area Connections to Layers
+                    F --> B
+                    F --> C
+                    F --> D
+                    G --> B
+                    G --> C
+                    G --> E
+                    H --> B
+                    H --> C
+                    I --> B
+                    I --> C
+                    I --> D
+
+                    %% Connecting Feature Areas to Specific Features
+                    F --> KB
+                    G --> API
+                    H --> Design
+                    I --> Learning
+                    
+                    %% Connecting Specific Features to Layers/Tech (Examples)
+                    F1 --> B
+                    F1 --> D
+                    F2 --> B
+                    F2 --> D
+                    F5 --> C
+                    F5 --> E1
+                    F6 --> B
+                    F6 --> E4
+                    
+                    G1 --> B
+                    G1 --> C
+                    G1 --> E2
+                    G2 --> B
+                    G2 --> C
+                    G2 --> E1
+                    G3 --> B
+                    G3 --> C
+                    G5 --> C
+                    G5 --> E3
+
+                    H1 --> B
+                    H1 --> C
+                    
+                    I1 --> B
+                    I1 --> D
+                    I3 --> B
+                    I3 --> D
+                    
+                    %% Connecting External APIs Group
+                    E --> ExtAPI
+
+                    %% Deployment Connection
+                    A --> M
+
+                    %% === Styling ===
+                    classDef root fill:#007bff,stroke:#0056b3,stroke-width:2px,color:#fff,font-weight:bold
+                    classDef layer fill:#6c757d,stroke:#495057,stroke-width:1px,color:#fff
+                    classDef featureArea fill:#17a2b8,stroke:#117a8b,stroke-width:1px,color:#fff
+                    classDef feature fill:#28a745,stroke:#1e7e34,stroke-width:1px,color:#fff
+                    classDef tech fill:#ffc107,stroke:#cca100,stroke-width:1px,color:#333
+                    classDef external fill:#dc3545,stroke:#a71d2a,stroke-width:1px,color:#fff
+
+                    class A root
+                    class B,C,D,E layer
+                    class F,G,H,I featureArea
+                    class F1,F2,F3,F4,F5,F6,G1,G2,G3,G4,G5,H1,H2,I1,I2,I3,I4 feature
+                    class J,K,L,M tech
+                    class E1,E2,E3,E4 external
+            </div>
+        </div>
+    </div>
+    <div class="zoom-controls">
+        <button class="zoom-button" onclick="zoomIn()" aria-label="Zoom in">Zoom In (+)</button>
+        <button class="zoom-button" onclick="zoomOut()" aria-label="Zoom out">Zoom Out (-)</button>
+        <button class="zoom-button" onclick="resetZoom()" aria-label="Reset zoom">Reset</button>
+    </div>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            securityLevel: 'loose',
+            themeVariables: {
+                fontSize: '14px',
+                fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+                primaryColor: '#f8f9fa',
+                primaryTextColor: '#212529',
+                primaryBorderColor: '#adb5bd',
+                lineColor: '#6c757d',
+                secondaryColor: '#e9ecef',
+                tertiaryColor: '#dee2e6',
+            },
+            flowchart: {
+                 useMaxWidth: false,
+                 htmlLabels: true
+            }
+        });
+
+        let currentZoom = 1;
+        const zoomStep = 0.15;
+        let isDragging = false;
+        let startX, startY;
+        let translateX = 0;
+        let translateY = 0;
+
+        const wrapper = document.getElementById('wrapper');
+        const container = document.getElementById('container');
+
+        function debounce(func, wait) {
+            let timeout;
+            return function(...args) {
+                const context = this;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        wrapper.addEventListener('mousedown', (e) => {
+            if (e.target === wrapper || e.target === container || e.target.closest('.mermaid')) {
+                isDragging = true;
+                wrapper.classList.add('dragging');
+                startX = e.clientX - translateX;
+                startY = e.clientY - translateY;
+                e.preventDefault();
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            translateX = e.clientX - startX;
+            translateY = e.clientY - startY;
+            debouncedUpdateTransform();
+        });
+
+        document.addEventListener('mouseup', (e) => {
+            if (isDragging) {
+                isDragging = false;
+                wrapper.classList.remove('dragging');
+            }
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+             if (isDragging) {
+                 isDragging = false;
+                 wrapper.classList.remove('dragging');
+             }
+        });
+
+        wrapper.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1 && (e.target === wrapper || e.target === container || e.target.closest('.mermaid'))) {
+                isDragging = true;
+                wrapper.classList.add('dragging');
+                startX = e.touches[0].clientX - translateX;
+                startY = e.touches[0].clientY - translateY;
+            }
+        }, { passive: false });
+
+        wrapper.addEventListener('touchmove', (e) => {
+            if (e.touches.length === 1 && isDragging) {
+                 e.preventDefault();
+                translateX = e.touches[0].clientX - startX;
+                translateY = e.touches[0].clientY - startY;
+                debouncedUpdateTransform();
+            }
+        }, { passive: false });
+
+        wrapper.addEventListener('touchend', (e) => {
+             if (isDragging) {
+                isDragging = false;
+                wrapper.classList.remove('dragging');
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            const activeElement = document.activeElement;
+            if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA' || activeElement.isContentEditable)) {
+                 return;
+            }
+
+            let moved = false;
+            switch (e.key) {
+                case '+':
+                case '=':
+                    zoomIn(); moved = true;
+                    break;
+                case '-':
+                case '_':
+                    zoomOut(); moved = true;
+                    break;
+                case '0':
+                    resetZoom(); moved = true;
+                    break;
+                case 'ArrowUp':
+                    translateY += 30; moved = true;
+                    break;
+                case 'ArrowDown':
+                    translateY -= 30; moved = true;
+                    break;
+                case 'ArrowLeft':
+                    translateX += 30; moved = true;
+                    break;
+                case 'ArrowRight':
+                    translateX -= 30; moved = true;
+                    break;
+            }
+            if (moved) {
+                 e.preventDefault();
+                 debouncedUpdateTransform();
+            }
+        });
+
+         wrapper.addEventListener('wheel', (e) => {
+             e.preventDefault();
+             const zoomFactor = e.deltaY < 0 ? 1 + zoomStep : 1 / (1 + zoomStep);
+             currentZoom *= zoomFactor;
+             currentZoom = Math.max(0.2, Math.min(currentZoom, 5));
+
+             const rect = container.getBoundingClientRect();
+             const mouseX = e.clientX - rect.left;
+             const mouseY = e.clientY - rect.top;
+
+             translateX -= (mouseX - container.offsetWidth / 2 - translateX) * (zoomFactor - 1);
+             translateY -= (mouseY - container.offsetHeight / 2 - translateY) * (zoomFactor - 1);
+
+             debouncedUpdateTransform();
+         }, { passive: false });
+
+        function zoomIn() {
+            currentZoom = Math.min(5, currentZoom * (1 + zoomStep * 2));
+            debouncedUpdateTransform();
+        }
+
+        function zoomOut() {
+            currentZoom = Math.max(0.2, currentZoom / (1 + zoomStep * 2));
+            debouncedUpdateTransform();
+        }
+
+        function resetZoom() {
+            currentZoom = 1;
+            translateX = 0;
+            translateY = 0;
+            debouncedUpdateTransform();
+        }
+
+        function updateTransform() {
+            container.style.transform = `translate(calc(-50% + ${translateX}px), calc(-50% + ${translateY}px)) scale(${currentZoom})`;
+        }
+
+        const debouncedUpdateTransform = debounce(updateTransform, 16);
+
+        window.addEventListener('load', () => {
+             updateTransform();
+        });
+
+         window.addEventListener('resize', debounce(() => {
+             updateTransform();
+         }, 100));
+    </script>
+</body>
+</html> 
