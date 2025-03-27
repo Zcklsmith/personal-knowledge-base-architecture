@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   testEnvironment: 'jsdom',
   setupFiles: ['jest-canvas-mock'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
@@ -10,4 +10,10 @@ module.exports = {
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov'],
   verbose: true,
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+  },
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@testing-library)/)',
+  ],
 }; 
